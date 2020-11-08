@@ -1,0 +1,121 @@
+/*Info 2413 Group Project: Option 1 "The Herbalist System"
+ *
+ * Annze Julia Villena 100372699
+ * Annelise Denny 100373908
+ * Sameer Muhammad 100373026
+ * Harman Dhaliwal 100384897
+ * Benjamin Rondou 100351404
+ * 
+ * Last Updated: 11/8/2020 */
+
+package theHerbalistSystem;
+
+import java.util.*;
+import java.text.*;
+
+public class HerbalistSystem {
+	//users logging in needed credientials
+	private String username = null; //user login username = null
+	private String password = null; //user login password = null
+	private String email = null; //user login email = null
+	
+	//hebalist functions
+	private String herbName = null; //herb name = null
+	private String herbDesc = null;  //herb description = null
+	private String herbUse = null; //herb medical use = null
+	private String herbFormula = null; //herb formula = null
+	//private image for  herb //herb image = null
+	
+	//search functions
+	private String searchFunction = null;
+	
+	//methods //default constructors
+	//public Herbalist System
+	/**
+	 * @param username
+	 * @param password
+	 * @param email
+	 * 
+	 * @param herbName
+	 * @param herbDesc
+	 * @param herbUse
+	 * @param herbFormula
+	 *
+	 */
+	HerbalistSystem(){}
+	public HerbalistSystem(String username, String password, String email, String herbName, String herbDesc, String herbUse, String herbFormula, String searchFunction){
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.herbName = herbName;
+		this.herbDesc = herbDesc;
+		this.herbUse = herbUse;
+		this.herbFormula = herbFormula;
+		this.searchFunction = searchFunction;
+	}
+	
+	//get username & set username
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	//get password & set paasword
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	//get email & set email
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	//get herbName & set herbName
+	public String getHerbName() {
+		return herbName;
+	}
+	public void setHerbName(String herbName) {
+		this.herbName = herbName;
+	}
+	
+	//get herbDesc & set herbDesc
+	public String getHerbDesc() {
+		return herbDesc;
+	}
+	public void setHerbDesc(String herbDesc) {
+		this.herbDesc = herbDesc;
+	}
+	
+	//get herbUse & set herbUse
+	public String getHerbUse() {
+		return herbUse;
+	}
+	public void setHerbUse(String herbUse) {
+		this.herbUse = herbUse;
+	}
+	
+	//get herbFormula & set herbFormula
+	public String getHerbFormula() {
+		return herbFormula;
+	}
+	public void setHerbFormula(String herbFormula) {
+		this.herbFormula = herbFormula;
+	}
+	
+	//get searchFunction & set searchFunction
+	public String getSearchFunction () {
+		return searchFunction;
+	}
+	public void setSearchFormula (String searchFunction) {
+		this.searchFunction = searchFunction;
+	}
+}
