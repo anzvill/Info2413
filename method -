@@ -1,0 +1,47 @@
+public static void AdminModUser (HerbalistLogin[][] login) {
+	Scanner input = new Scanner(System.in);
+	System.out.println("Enter 0 to edit a normal user profile");
+	System.out.println("Enter 1 to edit a herbalist user profile");
+	int usertype = input.nextInt(); 
+	
+	System.out.print("Enter the user's current username: ");
+	String username = input.next(); 
+
+	for(int j = 0; j < login.length; j++) {
+		if (login[usertype][j] != null && username.equals(login[usertype][j].getUsername())) {
+
+
+			System.out.println("What would you like to change about the user's credentials");
+			System.out.println("1. User name"); 
+			System.out.println("2. password"); 
+			System.out.println("3. email"); 
+			System.out.println("Enter Input: ");
+			Scanner s = new Scanner(System.in);
+			int ch = s.nextInt();
+
+
+	try {
+		
+		if(ch == 1) {
+			
+			HerbalistLogin modUsername = new HerbalistLogin(null, login[usertype][j].getPassword() , login[usertype][j].getEmail());
+			modUsername.changeUsername();	
+			System.out.println("New Credintials: " + modUsername.printDetails());
+			login[usertype][j]=modUsername;
+			
+		}
+		else if(ch == 2) {
+			HerbalistLogin modPassword = new HerbalistLogin(login[usertype][j].getUsername() , null, login[usertype][j].getEmail());
+			modPassword.changePassword();	
+			System.out.println("New Credintials: " + modPassword.printDetails());
+			login[usertype][j]=modPassword;
+		}
+		else if(ch == 3) {
+			HerbalistLogin modEmail = new HerbalistLogin(login[usertype][j].getUsername() , login[usertype][j].getPassword(), null);
+			modEmail.changeEmail();	
+			System.out.println("New Credintials: " + modEmail.printDetails());
+			login[usertype][j]=modEmail;
+		}
+		}catch(Exception ex) {}
+	}
+}
