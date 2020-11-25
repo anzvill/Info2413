@@ -293,7 +293,7 @@ public class SystemLogin {
 				break; 
 				case 2: adjustHerb();  
 				break; 
-				case 3: modifyProfile(); 
+				case 3: modifyProfile(login); 
 				break;
 				case 4: System.out.println("Closing system now. Goodbye."); 
 				continue; //double check this
@@ -357,6 +357,52 @@ public class SystemLogin {
 				break;
 			}
 		}
+		
+		if(exists) {
+			System.out.println("MENU");
+			System.out.println("____________");
+			System.out.println("1 : Modify User Profile");
+			System.out.println("2 : Delete User Profile");
+			System.out.println("3 : Add User Profile");
+			System.out.println("4: Add Herb, Delete Herb, or Modify Herb");
+			System.out.println("5 : Search for herb");
+			System.out.println("6 : Log out");
+			
+			System.out.print("Enter the number of your choice: ");
+			int menu = input.nextInt(); 
+			
+			do {
+				switch(menu) 
+				{
+				case 1: modifyUser(); 
+						break;
+				case 2: deleteUser(login);
+						break;
+				case 3: addUser(login);
+						break;
+				case 4: adjustHerb(); 
+						break;
+				case 5: search();
+						break;
+				case 6: System.out.println("Closing System now. Bye"); //logout menu takes you back to main menue of system
+						continue;
+				default: System.out.println("That is not one of the options, try again."); 
+						break;
+				}
+				
+				System.out.println("MENU");
+				System.out.println("____________");
+				System.out.println("1 : Modify User Profile");
+				System.out.println("2 : Delete User Profile");
+				System.out.println("3 : Add User Profile");
+				System.out.println("4: Add Herb, Delete Herb, or Modify Herb");
+				System.out.println("5 : Search for herb");
+				System.out.println("6 : Log out");
+				menu = input.nextInt();
+				}while(menu != 6);
+		}
+		else
+			System.out.println("bad");
 	}
 
 	public static void search() {
@@ -538,7 +584,7 @@ public class SystemLogin {
          }
 }
 
-public static String[] incArray(String[] theArray, int increaseBy)  
+	public static String[] incArray(String[] theArray, int increaseBy)  
 {  
          int i = theArray.length;  
          int n = ++i;  
@@ -552,11 +598,11 @@ public static String[] incArray(String[] theArray, int increaseBy)
 }
 	
 	public static void modifyProfile(HerbalistLogin[][] login) {
-		Scanner s=new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		System.out.println("What type of user are you? \n Type 0 for normal user. \n Type 1 for herbalitst user. \n Type 2 for admin user. ");
-		int usertype = s.nextInt(); 
+		int usertype = input.nextInt(); 
 		System.out.print("Enter current username: ");
-		String username = s.next(); 
+		String username = input.next(); 
 		
 		for(int j = 0; j < login.length; j++) {
 			if (login[usertype][j] != null && username.equals(login[usertype][j].getUsername())) {
@@ -568,22 +614,34 @@ public static String[] incArray(String[] theArray, int increaseBy)
 				System.out.println("3. email"); 
 				
 				try {
-					int ch=Integer.parseInt(s.nextLine()); 
+					int ch=Integer.parseInt(input.nextLine()); 
 					if(ch == 1) {
-						System.out.println("Enter new username");
-						String newName  = s.next(); 
-						login[usertype][j].setUsername = newName; 
+						/*System.out.println("Enter new username");
+						String newName  = input.next(); 
+						login[usertype][j].setUsername = newName; */
 						//create a way to show the new username 
+						
+						HerbalistLogin modUsername = new HerbalistLogin(null, login[usertype][j].getPassword(), login[usertype][j].getEmail());
+						modUsername.changeUsername();
+						System.out.println("New Credintials: " + modUsername.printDetails());
+						login[usertype][j] = modUsername; 
 					}
 					else if(ch == 2) {
-						System.out.println("Enter new password"); 
+						/*System.out.println("Enter new password"); 
 						String newPassword = s.next(); 
-						login[usertype][j].setPassword = newPassword;
+						login[usertype][j].setPassword = newPassword; */
+						
+						HerbalistLogin modPassword = new HerbalistLogin(login[usertype][j].getUsername() , null, login[usertype][j].getEmail());
+						modPassword.changePassword();
+						System.out.println("New Credintials: " + modPassword.printDetails());
+						login[usertype][j]=modPassword;
+						
 					}
 					else if(ch == 3) {
-						System.out.println("Enter new email"); 
-						String newEmail = s.next(); 
-						login[usertype][j].setEmail = newEmail; 
+						HerbalistLogin modEmail = new HerbalistLogin(login[usertype][j].getUsername() , login[usertype][j].getPassword(), null);
+						modEmail.changeEmail();	
+						System.out.println("New Credintials: " + modEmail.printDetails());
+						login[usertype][j]=modEmail;
 					}
 					}catch(Exception ex) {}
 			}
@@ -593,6 +651,60 @@ public static String[] incArray(String[] theArray, int increaseBy)
 		
 	}
 	 
+	private static void addUser(HerbalistLogin[][] login) {
+		Scanner input = new Scanner(System.in);
+		int usertype;
+		
+		boolean exists = false; 
+		do {
+		  System.out.print("Select a User Type you would like to add");
+		  System.out.println("Enter '0' for normal user");
+		  System.out.println("Enter '1' for herbalist user");
+		  System.out.println("Enter '2' for admin user");
+		  System.out.println("User Type:");
+		  usertype = input.nextInt();
+		}while(usertype < 0 || usertype > 2);
+		
+		System.out.println("Enter username: "); 
+		String username = input.next();
+		
+		//for loop to check every spot in the array if the user enter has a match 
+		for(int j = 0; j < login.length; j++) {
+			if (login[usertype][j] != null && username.equals(login[usertype][j].getUsername())) {
+				System.out.println("User is in the system already."); 
+				return; 
+			}
+			else {
+				HerbalistLogin login1 = new HerbalistLogin(username, null, null); 
+				login1.inputDetails();
+				System.out.println("Input complete."); 
+				System.out.println(login1.printDetails());
+				login[usertype][j] = login1;
+				return;
+			}
+		}
+		
+	}
+	
+	private static void deleteUser(HerbalistLogin[][] login) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter the user type you want to delete. \n 0 for normal user. \n 1 for herbalist user."); 
+		int usertype = input.nextInt();
+		System.out.println("Please enter the username you want to delete");
+		String username = input.next(); 
+		
+		for(int j = 0; j < login.length; j++) {
+			if (login[usertype][j] != null && username.equals(login[usertype][j].getUsername())) {
+				HerbalistLogin deleteuser = new HerbalistLogin(null, null, null);
+				System.out.println("New Credintials: " + deleteuser.printDetails());
+				login[usertype][j] = deleteuser;
+			}
+	   }
+	}
+	
+	private static void modifyUser() {
+		
+	}
 }
 
 
