@@ -1,5 +1,5 @@
 package theHerbalistSystem;
-
+import java.util.*;
 public class HerbalistLogin {
 	//users logging in needed credientials
 			private String username = null; //user login username = null
@@ -45,4 +45,47 @@ public class HerbalistLogin {
 			public void setEmail(String email) {
 				this.email = email;
 			}
+			
+public void changeUsername() {
+
+				Scanner input = new Scanner(System.in);
+				
+				System.out.print("Enter a username");
+				setUsername (input.next());
+				}
+
+public void changePassword() {
+
+	Scanner input = new Scanner(System.in);
+
+	
+	System.out.print("Enter a password");
+	setPassword (input.next());
+	
+	}
+
+public void changeEmail() {
+
+	Scanner input = new Scanner(System.in);
+	
+	System.out.print("Enter an email");
+	setEmail (input.next());
+	
+	
+	}
+
+public void inputDetails() {
+	Scanner input = new Scanner(System.in);
+	
+	System.out.println("Enter password: "); 
+	setPassword(input.next());
+	
+	System.out.println("Enter email: ");
+	setEmail(input.next()); 
+}
+
+public String printDetails()
+{ 
+	return ("Username" + this.username + " Email: " + this.email + " Password: " + this.password);
+	}
 }
