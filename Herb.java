@@ -1,18 +1,17 @@
+// Updated
 // This code is for herb searching, and adding, deleting, and modifying the herb.
-// Need help to convert it to a method to work with the system, and also setting admin privileges.
-// Also 2 things, not sure how to work with images in Java, as well as what to do for the herb formula.
-// Bug (working on), searching for a herb after deleting a herb causes error.
+// Bug, searching for a herb after deleting a herb causes error. (FIXED)
 
 import java.util.*;
 public class Herb
 {
         public static void main(String[] args) 
         {
-                    String[] herbName={"Chamomile","Echinacea","Feverfew"};
-                    String[] herbDescrip={"Ananxiolytic and sedative.","Dietary supplement.","Dietary supplement."};
-                    String[] medicalUse={"For anxiety and relaxation.","Common cold and other infections.","For migraine headache prevention, problems with menstruation, rheumatoid arthritis, psoriasis, allergies, asthma, tinnitus (ringing or roaring sounds in the ears), dizziness, nausea, vomiting, and for intestinal parasites."};
+                    String[] herbName={"Chamomile","Echinacea","Feverfew","Ginger","Ginkgo","Saint John's Wort","Valerian"};
+                    String[] herbDescrip={"Ananxiolytic and sedative.","Dietary supplement.","Dietary supplement.","Used as a spice and a folk medicine.","Improves blood circulation and acts as an antioxidant.","A flowering plant popular for depression.","A floweing plant popular for relaxation."};
+                    String[] medicalUse={"For anxiety and relaxation.","For common cold and other infections.","For migraine, headache prevention, problems with menstruation, rheumatoid arthritis, psoriasis, allergies, asthma, tinnitus (ringing or roaring sounds in the ears), dizziness, nausea, vomiting, and for intestinal parasites.","For motion sickness, morning sickness, colic, upset stomach, gas, diarrhea, irritable bowel syndrome (IBS), and nausea.","For altitude sickness, cerebral vascular insufficiency, cognitive disorders, dementia, dizziness/vertigo","For depression and symptoms that sometimes go along with mood such as nervousness, tiredness, poor appetite, and trouble sleeping.","For sleep disorders, especially insomnia."};
             
-                    String[] symptom={"Anxiety","Infection","Headaches"};
+                    String[] symptom={"Anxiety","Infections","Headaches","Heartburn, Diarrhea, Burping","Dementia, Alzheimer's, Fatigue","Depression","Insomnia, Anxiety"};
                     System.out.println("List of herbs:");
         
                     for(int i=0;i<herbName.length;i++)
@@ -42,12 +41,14 @@ public class Herb
                                             
                                             for(int i=0;i<herbName.length;i++)
                                             {
+                                                if(herbName[i]!=null){
                                                         if(herbName[i].contains(SearchInput) || herbDescrip[i].contains(SearchInput) || medicalUse[i].contains(SearchInput) || symptom[i].contains(SearchInput))
                                                         {
                                                                     found=true;
                                                                     System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+", Symptom: "+symptom[i]);
                                                         }               
                                             System.out.println();
+                                            }
                                             }
                       
                                             if(!found)
