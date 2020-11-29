@@ -1,4 +1,4 @@
-//last updated 11/28/2020 6:44Pm
+//last updated 11/29/2020 1:01Pm
 package theHerbalistSystem;
 
 import java.util.*;
@@ -652,17 +652,17 @@ System.out.println("Closing System for security purposes, too many error logins.
 
 	
 	/*
-	 * search method will prompt the user to enter a herbs: name, description, medical use, or symptom. 
+	 * search method will prompt the user to enter a herbs: name, description, medical use, formula, or symptom. 
 	 * the system will display all the information of the searched herb
 	 */
 	public static void search() {//search method
 		Scanner s = new Scanner(System.in);
 		
-		//four different arrays that will hold different values: name, description, medical use, and symptom
+		//four different arrays that will hold different values: name, description, medical use, formula, and symptom
 		 String[] herbName={"Chamomile","Echinacea","Feverfew","Ginger","Ginkgo","Saint John's Wort","Valerian"};
                     String[] herbDescrip={"Ananxiolytic and sedative.","Dietary supplement.","Dietary supplement.","Used as a spice and a folk medicine.","Improves blood circulation and acts as an antioxidant.","A flowering plant popular for depression.","A floweing plant popular for relaxation."};
                     String[] medicalUse={"For anxiety and relaxation.","For common cold and other infections.","For migraine, headache prevention, problems with menstruation, rheumatoid arthritis, psoriasis, allergies, asthma, tinnitus (ringing or roaring sounds in the ears), dizziness, nausea, vomiting, and for intestinal parasites.","For motion sickness, morning sickness, colic, upset stomach, gas, diarrhea, irritable bowel syndrome (IBS), and nausea.","For altitude sickness, cerebral vascular insufficiency, cognitive disorders, dementia, dizziness/vertigo","For depression and symptoms that sometimes go along with mood such as nervousness, tiredness, poor appetite, and trouble sleeping.","For sleep disorders, especially insomnia."};
-            
+                    String[] formula = {"Dry the flowers up and infuse into hot water to create your tea.","Place echinacea plants (flowers, leaves and roots) within boiled water to create your tea.","Dry the flowers up and infuse into hot water to create your tea.","Cut ginger into pieces and boil with hot water to create your tea.","Take ginkgo leaves and mix with boil water to create your tea.","Place the fresh flowers within hot water to create the tea.","Place valerian within the water to create the tea."};
                     String[] symptom={"Anxiety","Infections","Headaches","Heartburn, Diarrhea, Burping","Dementia, Alzheimer's, Fatigue","Depression","Insomnia, Anxiety"};
                     
                     //Print the list of herbs to the user to search from 
@@ -674,7 +674,7 @@ System.out.println("Closing System for security purposes, too many error logins.
          }
          
          //prompt the user to enter a name, description, medical use, or symptom of the herb they would like to seach
-         System.out.println("Enter either a Herb name, Herb description, Medical Use, or Symptom");
+         System.out.println("Enter either a Herb name, Herb description, Medical Use, Formula or Symptom");
 
          String SearchInput = s.nextLine(); 
          System.out.println("Results:"); //print the results of set herb
@@ -686,10 +686,10 @@ System.out.println("Closing System for security purposes, too many error logins.
          {
 	     if(herbName[i]!=null){//if the herbname is not empty then execute next steps
 	    	 		//the array will now check the position of 'i' to see if their are any matches, if there are any matches it will be displayed to the user
-                     if(herbName[i].contains(SearchInput) || herbDescrip[i].contains(SearchInput) || medicalUse[i].contains(SearchInput) || symptom[i].contains(SearchInput))
+                     if(herbName[i].contains(SearchInput) || herbDescrip[i].contains(SearchInput) || medicalUse[i].contains(SearchInput) || formula[i].contains(SearchInput) || symptom[i].contains(SearchInput))
                      {
                                  found=true;//change boolean value to true if the herb is found
-                                 System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+", Symptom: "+symptom[i]);
+                                 System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+ ", Formula: " +formula[i]+ ", Symptom: "+symptom[i]);
                      }               
          System.out.println();
          }
@@ -708,11 +708,11 @@ System.out.println("Closing System for security purposes, too many error logins.
 	 * only administrator users and herbalist users have the power to modify herbs
 	 */
 	public static void adjustHerb() {//adjustHerb method
-		//four different arrays that will hold different values: name, description, medical use, and symptom
+		//four different arrays that will hold different values: name, description, medical use, formula, and symptom
 		 String[] herbName={"Chamomile","Echinacea","Feverfew","Ginger","Ginkgo","Saint John's Wort","Valerian"};
                     String[] herbDescrip={"Ananxiolytic and sedative.","Dietary supplement.","Dietary supplement.","Used as a spice and a folk medicine.","Improves blood circulation and acts as an antioxidant.","A flowering plant popular for depression.","A floweing plant popular for relaxation."};
                     String[] medicalUse={"For anxiety and relaxation.","For common cold and other infections.","For migraine, headache prevention, problems with menstruation, rheumatoid arthritis, psoriasis, allergies, asthma, tinnitus (ringing or roaring sounds in the ears), dizziness, nausea, vomiting, and for intestinal parasites.","For motion sickness, morning sickness, colic, upset stomach, gas, diarrhea, irritable bowel syndrome (IBS), and nausea.","For altitude sickness, cerebral vascular insufficiency, cognitive disorders, dementia, dizziness/vertigo","For depression and symptoms that sometimes go along with mood such as nervousness, tiredness, poor appetite, and trouble sleeping.","For sleep disorders, especially insomnia."};
-            
+                    String[] formula = {"Dry the flowers up and infuse into hot water to create your tea.","Place echinacea plants (flowers, leaves and roots) within boiled water to create your tea.","Dry the flowers up and infuse into hot water to create your tea.","Cut ginger into pieces and boil with hot water to create your tea.","Take ginkgo leaves and mix with boil water to create your tea.","Place the fresh flowers within hot water to create the tea.","Place valerian within the water to create the tea."};
                     String[] symptom={"Anxiety","Infections","Headaches","Heartburn, Diarrhea, Burping","Dementia, Alzheimer's, Fatigue","Depression","Insomnia, Anxiety"};
          System.out.println("List of herbs:");
          
@@ -742,13 +742,20 @@ System.out.println("Closing System for security purposes, too many error logins.
                                  String desc =s.nextLine();
                                  System.out.println("Medical use:");
                                  String gen =s.nextLine();
+                                 System.out.println("Formula:");
+                                 String form = s.nextLine();
                                  System.out.println("Symptoms:");
                                  String nSym =s.nextLine();
                                  herbName= incArray(herbName,1); //herbName will be sent to incArray method
                                  herbDescrip=incArray(herbDescrip,1); //herbDescrip will be sent to incArray method
                                  medicalUse=incArray(medicalUse,1); //medicalUse will be sent to incArray method
+                                 formula = incArray(formula, 1);//formula will be sent to incArray method
                                  symptom=incArray(symptom,1); //symptom will be sent to incArray method
-                                 herbName[herbName.length-1]=name;herbDescrip[herbDescrip.length-1]=desc;medicalUse[medicalUse.length-1]=gen;symptom[symptom.length-1]=nSym;
+                                 herbName[herbName.length-1]=name;
+                                 herbDescrip[herbDescrip.length-1]=desc;
+                                 medicalUse[medicalUse.length-1]=gen;
+                                 formula[formula.length-1]=form;
+                                 symptom[symptom.length-1]=nSym;
                                  System.out.println("Added Successfully."); //once the information is entered a message will be displayed
 
                                  System.out.println("\nList of herbs:");//the system will display the list of herbs again
@@ -757,7 +764,7 @@ System.out.println("Closing System for security purposes, too many error logins.
                                  for(int i=0;i<herbName.length;i++)
                                  {
                                              if(herbName[i]!=null)
-                                             System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+", Symptom: "+symptom[i]);
+                                            	 System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+ ", Formula: " +formula[i]+ ", Symptom: "+symptom[i]);
                                  }
 
                                  break;
@@ -772,7 +779,7 @@ System.out.println("Closing System for security purposes, too many error logins.
                                              if(in.equals(herbName[i]))
                                              {
                                             	 		//Prompt the user to enter what they would like to modify about the herb
-                                                         System.out.println("Please enter what you'd like to modify about this herb: \n Type 1 for herb name. \n Type 2 for symptom(s). \n Type 3 for the herb description. \n Type 4 for medical use.");
+                                                         System.out.println("Please enter what you'd like to modify about this herb: \n Type 1 for herb name. \n Type 2 for symptom(s). \n Type 3 for the herb description. \n Type 4 for medical use. \n Type 5 for formula.");
                                                          try
                                                          {  
                                                                      int ch=Integer.parseInt(s.nextLine());//make sure the entered value is an integer
@@ -805,6 +812,12 @@ System.out.println("Closing System for security purposes, too many error logins.
                                                                                  String newUse = s.nextLine();
                                                                                  medicalUse[i] = newUse;
                                                                      }
+                                                                     else if(ch==5)
+                                                                     {
+                                                                    	 System.out.println("Enter the new formula:");
+                                                                    	 String newForm = s.nextLine();
+                                                                    	 formula[i] = newForm;
+                                                                     }
                                                          }catch(Exception ex){}
                                              }
                                              System.out.println();
@@ -815,7 +828,7 @@ System.out.println("Closing System for security purposes, too many error logins.
                                  for(int i=0;i<herbName.length;i++)
                                  {
                                              if(herbName[i]!=null)
-                                             System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+", Symptom: "+symptom[i]);
+                                            	 System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+ ", Formula: " +formula[i]+ ", Symptom: "+symptom[i]);
                                  }
 
                                  break;
@@ -833,6 +846,7 @@ System.out.println("Closing System for security purposes, too many error logins.
                                                          herbName[i]=null;
                                                          symptom[i]=null;
                                                          herbDescrip[i]=null;
+                                                         formula[i] = null;
                                                          medicalUse[i]=null;
                                                          System.out.println("Delete success.");
                                              }
@@ -844,7 +858,7 @@ System.out.println("Closing System for security purposes, too many error logins.
                                  for(int i=0;i<herbName.length;i++)
                                  {
                                              if(herbName[i]!=null)
-                                             System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+", Symptom: "+symptom[i]);
+                                            	 System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+ ", Formula: " +formula[i]+ ", Symptom: "+symptom[i]);
                                  }
                                  
                                  break;
