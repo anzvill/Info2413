@@ -292,11 +292,11 @@ public class SystemLogin {
 				
 				switch(menu) 
 				{
-				case 1: modifyUserProfile(); 
+				case 1: modifyUserProfile(null);
 						break;
-				case 2: deleteUserProfile();
+				case 2: deleteUserProfile(null);
 						break;
-				case 3: addUserProfile();
+				case 3: addUserProfile(null, menu);
 						break;
 				case 4: addHerb();
 						break;
@@ -326,21 +326,90 @@ public class SystemLogin {
 				}while(menu != 8);
 	}
   
-	private static void modifyUserProfile() {
+	private static void modifyUserProfile(HerbalistLogin[][] login) {
 		// TODO Auto-generated method stub
 		 System.out.println("test editing user profile from admin user");
+		 System.out.println("Enter in the following User that you would like to make edits too: " + '\n');
+		 printListOfUser(login);
+
+		 //
+				  //Reading input from user
+				  Scanner input = new Scanner(System.in);
+		  
+				  //Change Username
+				  System.out.print("Enter your NEW username: ");
+				  String username = input.next();
+				  
+				  //Change Password
+				  System.out.print("Enter your NEW password: ");
+				  String password = input.next();
+				  System.out.print(password);
+				  
+				  //Change Email
+				  System.out.print("Enter your NEW email: ");
+				  String email = input.next();
+				  
+				  
+				  System.out.print("Here are the changes you have made..." + '\n' +"Username :"+ username + '\n' + "Password: " + password + '\n' + "Email :"+ email);
+		 printListOfUser(login);
+
+		 // Take updated info and store into array
+
+
 		  return;
 	}
 
-	private static void addUserProfile() {
+	private static void addUserProfile(HerbalistLogin[][] login, int usertype) {
 		// TODO Auto-generated method stub
 		 System.out.println("test adding user profile from admin user");
+		 //Reading input from user
+		 Scanner input = new Scanner(System.in);
+		  
+
+		 //Select Which Type of User
+		  System.out.print("Select User Type");
+		  System.out.println("Enter '0' for normal user");
+		  System.out.println("Enter '1' for herbalist user");
+		  System.out.println("Enter '2' for admin user");
+		  System.out.println("User Type:");
+		  usertype = input.nextInt();
+		  
+		  
+		 
+		 
+		 //Add Username
+		  System.out.print("Enter your NEW username: ");
+		  String username = input.next();
+		  
+		  //Add Password
+		  System.out.print("Enter your NEW password: ");
+		  String password = input.next();
+
+		  
+		  //Add Email
+		  System.out.print("Enter your NEW email: ");
+		  String email = input.next();
+		  
+		  
+		  System.out.print("Here are the changes you have made..." + '\n' +"User Type"+ usertype +'\n' +"Username :"+ username + '\n' + "Password: " + password + '\n' + "Email :"+ email);
+		  printListOfUser(login);
+
+		 // Take updated info and store into array
+
+
+
+		 
 		  return;
 	}
 
-	private static void deleteUserProfile() {
+	private static void deleteUserProfile(HerbalistLogin[][] login) {
 		// TODO Auto-generated method stub
-		 System.out.println("test deleting user profile from admin user");
+		 System.out.println("Select which user to delete");
+		 printListOfUser(login);
+
+		 // Take updated info and store into array
+
+
 		  return;
 	}
 
@@ -372,6 +441,21 @@ public static void modifyProfile()
   {
 	  System.out.println("test search for herb ");
 	  return;
+  }
+  public static void printListOfUser(HerbalistLogin[][] login)
+  {
+	  System.out.println("Current Users in the system");
+
+/*  Not sure if the deepToString Method will display correct,
+    for(int i=0; i<login.length; i++) {
+		for(int j=0; j<login[i].length; j++) {
+			
+			System.out.println(login[i][j]);
+		}
+	System.out.println();
+	}*/
+	  
+	  System.out.println(Arrays.deepToString(login));
   }
 
 }
