@@ -1,4 +1,3 @@
-//last updated 11/29/2020 1:01Pm
 package theHerbalistSystem;
 
 import java.util.*;
@@ -593,9 +592,9 @@ System.out.println("Closing System for security purposes, too many error logins.
 				System.out.println("1 : Modify a Users Profile");
 				System.out.println("2 : Delete a Users Profile");
 				System.out.println("3 : Add User Profile");
-				System.out.println("4: Add Herb, Delete Herb, or Modify Herb");
+				System.out.println("4 : Add Herb, Delete Herb, or Modify Herb");
 				System.out.println("5 : Search for herb");
-				System.out.println("6: Modify Profile");
+				System.out.println("6 : Modify Profile");
 				System.out.println("7 : Log out");
 
 				System.out.print("Enter the number of your choice: ");
@@ -674,7 +673,7 @@ System.out.println("Closing System for security purposes, too many error logins.
          }
          
          //prompt the user to enter a name, description, medical use, or symptom of the herb they would like to seach
-         System.out.println("Enter either a Herb name, Herb description, Medical Use, Formula or Symptom");
+         System.out.println("Enter either a Herb name, Herb description, Medical Use, Formula or Symptom: ");
 
          String SearchInput = s.nextLine(); 
          System.out.println("Results:"); //print the results of set herb
@@ -959,7 +958,7 @@ System.out.println("Closing System for security purposes, too many error logins.
 		
 		boolean exists = false; 
 		do {//ask user what type of user they would like to add
-		  System.out.print("Select a User Type you would like to add");
+		  System.out.println("Select a User Type you would like to add");
 		  System.out.println("Enter '0' for normal user");
 		  System.out.println("Enter '1' for herbalist user");
 		  System.out.println("Enter '2' for admin user");
@@ -1017,7 +1016,7 @@ System.out.println("Closing System for security purposes, too many error logins.
 	 * modifyUser method allows admins to adjust other users credentials 
 	 * changing their username password and email 
 	 */
-	public static void modifyUser(HerbalistLogin[][] login) {//modifyUser method
+	private static void modifyUser(HerbalistLogin[][] login) {//modifyUser method
 	Scanner input = new Scanner(System.in);
 	//Prompt user to enter what type of user they are adjusting 
 	System.out.println("Enter 0 to edit a normal user profile");
