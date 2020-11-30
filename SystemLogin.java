@@ -1,5 +1,4 @@
 package theHerbalistSystem;
-
 import java.util.*;
 public class SystemLogin {
 
@@ -9,7 +8,7 @@ public class SystemLogin {
 		// TODO Auto-generated method stub
 		HerbalistLogin [][] login = new HerbalistLogin[3][20]; //array to hold the users info (user name, password, email)
 		
-
+		
 		//initialize the pre registered users as a test 
 		//row 0 = normal users
 		//row 1 = herbalist users
@@ -447,7 +446,7 @@ public class SystemLogin {
 				break; 
 				}
 
-				System.out.println("good");
+				
 				System.out.println("MENU");
 				System.out.println("1: Search Herb");
 				System.out.println("2: Add Herb, Delete Herb, or Modify Herb");
@@ -690,7 +689,7 @@ System.out.println("Closing System for security purposes, too many error logins.
                                  found=true;//change boolean value to true if the herb is found
                                  System.out.println(herbName[i]+", Medical use: "+medicalUse[i]+", Description: "+herbDescrip[i]+ ", Formula: " +formula[i]+ ", Symptom: "+symptom[i]);
                      }               
-         System.out.println();
+        
          }
 	 }
 
@@ -1065,6 +1064,6 @@ System.out.println("Closing System for security purposes, too many error logins.
 		}catch(Exception ex) {}//catch if there is an error 
 	}
    }
-  }
+  }//end of modifyUser()
 	
-}
+}//end of system
